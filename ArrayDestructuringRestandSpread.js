@@ -23,6 +23,7 @@ export function getFirstCard(deck) {
    * @returns {Card} the second card in the deck
    */
   export function getSecondCard(deck) {
+    // @ts-ignore
     const [firstCard, secondCard] = deck;
     return secondCard;
   }
@@ -53,6 +54,7 @@ export function getFirstCard(deck) {
   }
   
   /** @type {Card[]} **/
+  // @ts-ignore
   const FACE_CARDS = ['jack', 'queen', 'king'];
   
   /**
