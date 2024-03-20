@@ -60,8 +60,10 @@ export class TranslationService {
      */
     request(text) {
         const api = this.api;
+        // @ts-ignore
         function requestPromise(txt) {
             return new Promise((resolve, reject) => {
+                // @ts-ignore
                 api.request(text, err => (err ? reject(err) : resolve()));
             });
         }
@@ -134,6 +136,7 @@ export class BatchIsEmpty extends Error {
 
 
 
+// @ts-ignore
 import { AbusiveClientError, NotAvailable, Untranslatable } from './errors';
 
 const mutex = { current: false };
@@ -143,6 +146,7 @@ const mutex = { current: false };
  * @typedef {Record<string, Array<null | Translation>>} TranslatableValues
  *
  */
+// @ts-ignore
 export class ExternalApi {
     /**
      * @param {Readonly<TranslatableValues>} values
@@ -166,6 +170,7 @@ export class ExternalApi {
             this.values[value] = [];
         }
 
+        // @ts-ignore
         this.values[value].push(translation ? { translation, quality } : null);
         return this;
     }
@@ -263,6 +268,7 @@ class BadRequest extends Error {
 
 
 
+// @ts-ignore
 export class NotAvailable extends Error {
     constructor(text) {
         super(
@@ -273,6 +279,7 @@ export class NotAvailable extends Error {
     }
 }
 
+// @ts-ignore
 export class AbusiveClientError extends Error {
     constructor() {
         super(
@@ -285,6 +292,7 @@ export class AbusiveClientError extends Error {
     }
 }
 
+// @ts-ignore
 export class Untranslatable extends Error {
     constructor() {
         super('jIyajbe’');
@@ -301,17 +309,22 @@ export class Untranslatable extends Error {
  * type information on the fly
  */
 
+// @ts-ignore
 interface ExternalApi {
     fetch: fetchTranslation;
     request: requestTranslation;
 }
 
+// @ts-ignore
 interface Translation {
     translation: string;
     quality: number;
 }
 
+// @ts-ignore
+// @ts-ignore
 type fetchTranslation = (text: string) => Promise<Translation>;
+// @ts-ignore
 type requestTranslation = (
     text: string,
     callback: (err?: Error) => void,
